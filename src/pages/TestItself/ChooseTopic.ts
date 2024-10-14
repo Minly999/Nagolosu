@@ -65,7 +65,9 @@ function checkWrongWordLength(wrongWord: string, sylable: number){
     const vowels = ['а', 'е', 'є', 'и', 'і', 'ї', 'о', 'у', 'ю', 'я'];
 
     let length: number = 0;
-    wrongWord.split("").forEach((letter) => {vowels.includes(letter) ? length++ : null; console.log(letter)})
+    wrongWord.split("").forEach((letter) => {vowels.includes(letter) ? length++ : null;
+        //  console.log(letter)
+        })
     return length >= sylable ? false : true
 }
 

@@ -11,16 +11,16 @@ export const Test = () => {
         <Outlet />
       ) : (
         <>
-          <div className="mt-8 text-2xl font-bold text-black w-full text-center">
-            Its a test
+          <div className="mt-8 text-[50px] font-bold text-black w-full text-center">
+            Тести з Української мови
           </div>
           <button
             onClick={() => {
               navigateTo("/test");
             }}
-            className="mt-[30vh] w-[20%] h-[10vh] bg-stone-600 text-white font-medium text-lg"
+            className="mt-[30vh] w-[20%] h-[10vh] bg-stone-600 text-white font-medium text-2xl"
           >
-            Start
+            Наголоси
           </button>
         </>
       )}

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { alphabet } from "./TestItself";
 import { useState } from "react";
+import { useShowAnswers } from "../contexts/ShowAnswersContext";
 
 export const ChooseOption = ({rightAnswer, setRerender}: {rightAnswer: number, setRerender: React.Dispatch<React.SetStateAction<boolean>>}) => {
 
@@ -12,12 +13,16 @@ export const ChooseOption = ({rightAnswer, setRerender}: {rightAnswer: number, s
 
     const [fail, setFail] = useState<boolean>(false)
 
+    const {showAnswers, setShowAnswers} = useShowAnswers()
+
   function iCantHandleCliiiiick(option: number) {
     setOption(option);
   }
 
   function checkAnswer(){
     setAnswer(true)
+    setShowAnswers(true)
+    console.log("answer changes")
     if(option !== rightAnswer){
         setFail(true)
     }
@@ -27,6 +32,7 @@ export const ChooseOption = ({rightAnswer, setRerender}: {rightAnswer: number, s
     setOption(NaN)
     setAnswer(false)
     setFail(false)
+    setShowAnswers(false)
   }
 
   function nextQuestion(){
