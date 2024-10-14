@@ -2,8 +2,8 @@
 import { firstSylable, secondSylable, thirdSylable, fourthSylable, fifthSylable } from "../main/Data"
 import { shuffleArray } from "../otherFunctions/shuffleArray";
 
-function chooseRandomTopic(){
-    let randChance = Math.floor(Math.random() * 100)
+function chooseRandomTopic(first?: boolean){
+    let randChance = first ? Math.floor(Math.random() * 92) : Math.floor(Math.random() * 100)
     let sylable: number;
     let topicArray: string[];
     // chances are 31% 31% 31% 4% 3%
@@ -57,28 +57,37 @@ function chooseWrongTopic({topicArray, sylable}: chooseWrongTopicPropsType){
 type randomWrongWordPropsType = {
     topicArray: string[],
     word1?: string,
-    word2?:string
+    word2?:string,
+    sylable: number,
 }
 
-function randowWrongWord({topicArray, word1, word2}: randomWrongWordPropsType){
+function checkWrongWordLength(wrongWord: string, sylable: number){
+    const vowels = ['а', 'е', 'є', 'и', 'і', 'ї', 'о', 'у', 'ю', 'я'];
+
+    let length: number = 0;
+    wrongWord.split("").forEach((letter) => {vowels.includes(letter) ? length++ : null; console.log(letter)})
+    return length >= sylable ? false : true
+}
+
+function randowWrongWord({topicArray, word1, word2, sylable}: randomWrongWordPropsType){
     let wrongWord: string = "none"
     do{
         wrongWord = topicArray[Math.floor(Math.random() * topicArray.length)];
-    }while(wrongWord === word1 && wrongWord === word2)
+    }while(wrongWord === word1 || wrongWord === word2 || checkWrongWordLength(wrongWord, sylable))
     return wrongWord
 }
 
 export function createTest(){
     
-    const rightTopic = chooseRandomTopic()
+    const rightTopic = chooseRandomTopic(true)
     const wrongTopicFirst = chooseWrongTopic(rightTopic)
     const wrongTopicSecond = chooseWrongTopic(rightTopic)
     const wrongTopicThird = chooseWrongTopic(rightTopic)
 
     let randomRightWord = rightTopic.topicArray[Math.floor(Math.random() * rightTopic.topicArray.length)];
-    let randomWrongWordFirst = randowWrongWord({ topicArray: wrongTopicFirst.topicArray })
-    let randomWrongWordSecond = randowWrongWord({ topicArray: wrongTopicSecond.topicArray, word1: randomWrongWordFirst })
-    let randomWrongWordThird = randowWrongWord({ topicArray: wrongTopicThird.topicArray, word1: randomWrongWordFirst, word2: randomWrongWordSecond })
+    let randomWrongWordFirst = randowWrongWord({ topicArray: wrongTopicFirst.topicArray, sylable: rightTopic.sylable })
+    let randomWrongWordSecond = randowWrongWord({ topicArray: wrongTopicSecond.topicArray, word1: randomWrongWordFirst, sylable: rightTopic.sylable })
+    let randomWrongWordThird = randowWrongWord({ topicArray: wrongTopicThird.topicArray, word1: randomWrongWordFirst, word2: randomWrongWordSecond, sylable: rightTopic.sylable })
 
     const testUnshuffled = [{
         word: randomRightWord,

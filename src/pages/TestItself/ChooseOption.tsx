@@ -37,7 +37,7 @@ export const ChooseOption = ({rightAnswer, setRerender}: {rightAnswer: number, s
   return (
     <div className="flex">
         {alphabet.map((letter, letterIndex) => (
-          <div onClick={() => iCantHandleCliiiiick(letterIndex)} key={letterIndex} className="mr-[20px]">
+          <div onClick={() => !answer ? iCantHandleCliiiiick(letterIndex) : null} key={letterIndex} className="mr-[20px]">
             <div className="cursor-pointer text-[50px] font-bold text-center">{letter}</div>
             <div
               className="relative w-[60px] h-[60px] rounded-lg border-[4px] border-slate-800 cursor-pointer"
