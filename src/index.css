@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    /* cursor: url(/public/dwayne-the-rock-johnson-stubble-celebrity-mask.png), auto; */
+}

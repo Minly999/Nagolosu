@@ -2,11 +2,12 @@ import { useState } from "react";
 import { createTest } from "./ChooseTopic";
 import { ChooseOption } from "./ChooseOption";
 import { AnswerSylable } from "./AnswerSylable";
-import { ShowAnswersProvider } from "../contexts/ShowAnswersContext";
+import { ShowAnswersProvider } from "../../contexts/ShowAnswersContext";
+import { ProgressBar } from "./Progress/ProgressBar";
 
 export const alphabet = ["А", "Б", "В", "Г"];
 
-export const TestItself = () => {
+export const Nagolosu = () => {
 
   const [options, sylable] = createTest();
 

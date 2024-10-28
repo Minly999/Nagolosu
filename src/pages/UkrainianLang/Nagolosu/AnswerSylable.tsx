@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { useShowAnswers } from "../contexts/ShowAnswersContext"
+import { useShowAnswers } from "../../contexts/ShowAnswersContext"
 
 export const AnswerSylable = ({sylable}: {sylable: number}) => {
   

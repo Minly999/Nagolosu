@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { alphabet } from "./TestItself";
+import { alphabet } from "./Nagolosu";
 import { useState } from "react";
-import { useShowAnswers } from "../contexts/ShowAnswersContext";
+import { useShowAnswers } from "../../contexts/ShowAnswersContext";
 
 export const ChooseOption = ({rightAnswer, setRerender}: {rightAnswer: number, setRerender: React.Dispatch<React.SetStateAction<boolean>>}) => {
 
@@ -14,6 +14,27 @@ export const ChooseOption = ({rightAnswer, setRerender}: {rightAnswer: number, s
     const [fail, setFail] = useState<boolean>(false)
 
     const {showAnswers, setShowAnswers} = useShowAnswers()
+
+
+    document.addEventListener('keydown', function(event) {
+      // Check which key was pressed
+      switch(event.key) {
+          case '1':
+              iCantHandleCliiiiick(0)
+              break;
+          case '2':
+              iCantHandleCliiiiick(1)
+              break;
+          case '3':
+              iCantHandleCliiiiick(2)
+              break;
+          case '4':
+              iCantHandleCliiiiick(3)
+              break;
+          default: 
+              break;
+          }
+  });
 
   function iCantHandleCliiiiick(option: number) {
     setOption(option);

@@ -1,6 +1,6 @@
 
-import { firstSylable, secondSylable, thirdSylable, fourthSylable, fifthSylable } from "../main/Data"
-import { shuffleArray } from "../otherFunctions/shuffleArray";
+import { firstSylable, secondSylable, thirdSylable, fourthSylable, fifthSylable } from "../../main/Data"
+import { shuffleArray } from "../../otherFunctions/shuffleArray";
 
 function chooseRandomTopic(first?: boolean){
     let randChance = first ? Math.floor(Math.random() * 92) : Math.floor(Math.random() * 100)
